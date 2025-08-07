@@ -27,4 +27,4 @@ def contact_view(request):
     else:
         form = ContactForm()
 
-    return render(request, 'your_template.html', {'form': form, 'sent': sent})
+    return render(request, 'home.html', {'form': form, 'sent': sent})
