@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Luxury Interiors | DesignCo</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Raleway:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --gold: #d4af37;
+      --dark-gold: #b8860b;
+      --charcoal: #1a1a1a;
+      --light-charcoal: #2d2d2d;
+      --ivory: #f8f5f0;
+      --gray: #8c8c8c;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Raleway', sans-serif;
+      background-color: #fafafa;
+      color: #333;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+    }
+    
+    h1, h2, h3, h4, h5 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+    }
+    
+     /* Navigation */
+    .navbar {
+      background-color: rgba(255, 255, 255, 0.95);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+      padding: 15px 5%;
+      transition: all 0.4s ease;
+    }
+    
+    .navbar.scrolled {
+      background-color: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+      padding: 10px 5%;
+    }
+    
+    .navbar-brand {
+      font-weight: 700;
+      font-size: 1.8rem;
+      color: var(--primary);
+      letter-spacing: 0.5px;
+    }
+    
+    .navbar-brand span {
+      color: var(--secondary);
+      position: relative;
+    }
+    
+    .navbar-brand span:after {
+      content: '';
+      position: absolute;
+      bottom: 2px;
+      left: 0;
+      width: 100%;
+      height: 2px;
+      background: var(--secondary);
+    }
+    
+    .nav-link {
+      font-weight: 500;
+      margin: 0 15px;
+      transition: all 0.3s ease;
+      position: relative;
+      color: var(--dark);
+    }
+    
+    .nav-link:after {
+      content: '';
+      position: absolute;
+      bottom: -2px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--secondary);
+      transition: all 0.3s ease;
+    }
+    
+    .nav-link:hover, .nav-link.active {
+      color: var(--secondary);
+    }
+    
+    .nav-link:hover:after, .nav-link.active:after {
+      width: 100%;
+    }
+    
+    .btn-custom {
+      background: var(--secondary);
+      color: #fff;
+      border: none;
+      padding: 12px 28px;
+      border-radius: 2px;
+      font-weight: 600;
+      transition: all 0.3s ease;
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      font-size: 0.9rem;
+      box-shadow: 0 4px 15px rgba(201, 169, 110, 0.3);
+    }
+    
+    .btn-custom:hover {
+      background: #b8965a;
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(201, 169, 110, 0.4);
+    }
+    
+    /* Hero Section */
+    .hero {
+      position: relative;
+      height: 100vh;
+      background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), 
+                  url('https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') center/cover no-repeat;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      text-align: center;
+      padding-top: 70px;
+    }
+    
+    .hero h1 {
+      font-size: 5rem;
+      font-weight: 700;
+      text-shadow: 0 5px 15px rgba(0, 0, 0, 0.6);
+      margin-bottom: 30px;
+      letter-spacing: 2px;
+      animation: fadeInUp 1s ease;
+    }
+    
+    .hero-subtitle {
+      font-size: 1.5rem;
+      max-width: 700px;
+      margin: 0 auto 40px;
+      animation: fadeInUp 1s ease 0.2s forwards;
+      opacity: 0;
+    }
+    
+    .hero-btn {
+      background: transparent;
+      color: white;
+      border: 2px solid var(--gold);
+      padding: 15px 40px;
+      border-radius: 0;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: all 0.4s ease;
+      animation: fadeInUp 1s ease 0.4s forwards;
+      opacity: 0;
+    }
+    
+    .hero-btn:hover {
+      background: var(--gold);
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* Section Styling */
+    .section {
+      padding: 120px 5%;
+      position: relative;
+    }
+    
+    .section-title {
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+      position: relative;
+      display: inline-block;
+      color: var(--charcoal);
+    }
+    
+    .section-title:after {
+      content: '';
+      position: absolute;
+      bottom: -15px;
+      left: 0;
+      width: 80px;
+      height: 3px;
+      background: var(--gold);
+    }
+    
+    .section-subtitle {
+      color: var(--gray);
+      margin-bottom: 60px;
+      max-width: 700px;
+      font-size: 1.2rem;
+    }
+    
+    /* Project Overview */
+    .overview-card {
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
+      height: 100%;
+    }
+    
+    .overview-header {
+      background: var(--charcoal);
+      color: white;
+      padding: 30px;
+      text-align: center;
+    }
+    
+    .overview-content {
+      padding: 30px;
+    }
+    
+    .overview-list {
+      list-style: none;
+    }
+    
+    .overview-list li {
+      padding: 15px 0;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      justify-content: space-between;
+    }
+    
+    .overview-list li:last-child {
+      border-bottom: none;
+    }
+    
+    .overview-list span:first-child {
+      font-weight: 600;
+      color: var(--charcoal);
+    }
+    
+    .overview-list span:last-child {
+      color: var(--gray);
+    }
+    
+    /* Gallery Section */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 30px;
+    }
+    
+    .gallery-item {
+      border-radius: 10px;
+      overflow: hidden;
+      position: relative;
+      height: 450px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .gallery-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s ease;
+    }
+    
+    .gallery-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.4);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      opacity: 0;
+      transition: opacity 0.4s ease;
+      padding: 20px;
+      text-align: center;
+      color: white;
+    }
+    
+    .gallery-item:hover .gallery-overlay {
+      opacity: 1;
+    }
+    
+    .gallery-item:hover .gallery-img {
+      transform: scale(1.05);
+    }
+    
+    /* Video Carousel */
+    .video-carousel {
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+    }
+    
+    .video-carousel iframe {
+      width: 100%;
+      height: 600px;
+      border: none;
+    }
+    
+    .carousel-control-prev, .carousel-control-next {
+      width: 60px;
+      height: 60px;
+      background: rgba(0, 0, 0, 0.5);
+      border-radius: 50%;
+      top: 50%;
+      transform: translateY(-50%);
+      opacity: 0.7;
+      transition: all 0.3s ease;
+    }
+    
+    .carousel-control-prev:hover, .carousel-control-next:hover {
+      opacity: 1;
+      background: var(--gold);
+    }
+    
+    /* CTA Section */
+    .cta-section {
+      background: linear-gradient(rgba(0, 0, 0, 0.8), rgba(0, 0, 0, 0.8)), 
+                  url('https://images.unsplash.com/photo-1616486029423-aaa4789e8c9a?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1770&q=80') center/cover no-repeat;
+      color: white;
+      text-align: center;
+      padding: 120px 5%;
+    }
+    
+    .cta-title {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+    }
+    
+    .cta-subtitle {
+      font-size: 1.3rem;
+      max-width: 700px;
+      margin: 0 auto 50px;
+      color: rgba(255, 255, 255, 0.9);
+    }
+    
+    .cta-btn {
+      background: var(--gold);
+      color: var(--charcoal);
+      border: none;
+      padding: 18px 50px;
+      border-radius: 0;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      transition: all 0.4s ease;
+      font-size: 1.1rem;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    
+    .cta-btn:before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: -100%;
+      width: 100%;
+      height: 100%;
+      background: var(--charcoal);
+      transition: all 0.4s ease;
+      z-index: -1;
+    }
+    
+    .cta-btn:hover:before {
+      left: 0;
+    }
+    
+    .cta-btn:hover {
+      color: white;
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    }
+    
+    /* WhatsApp Button */
+    .whatsapp-float {
+      position: fixed;
+      width: 70px;
+      height: 70px;
+      bottom: 40px;
+      right: 40px;
+      background-color: #25d366;
+      color: white;
+      border-radius: 50%;
+      text-align: center;
+      font-size: 36px;
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+      transition: all 0.3s ease;
+      animation: pulse 2s infinite;
+    }
+    
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    }
+    
+    /* Enquire Banner */
+    .enquire-banner {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: var(--charcoal);
+      color: white;
+      text-align: center;
+      padding: 20px 0;
+      font-size: 1.2rem;
+      font-weight: 600;
+      z-index: 999;
+      cursor: pointer;
+      transition: all 0.4s ease;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 15px;
+    }
+    
+    .enquire-banner:hover {
+      background: var(--gold);
+      color: var(--charcoal);
+    }
+    
+    /* Modal */
+    .modal-img {
+      display: none;
+      position: fixed;
+      z-index: 2000;
+      padding-top: 100px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.95);
+    }
+    
+    .modal-img-content {
+      margin: auto;
+      display: block;
+      width: 80%;
+      max-width: 1200px;
+      max-height: 80vh;
+      object-fit: contain;
+    }
+    
+    .modal-close {
+      position: absolute;
+      top: 40px;
+      right: 50px;
+      color: white;
+      font-size: 50px;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      opacity: 0.7;
+    }
+    
+    .modal-close:hover {
+      opacity: 1;
+      transform: rotate(90deg);
+    }
+    
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0.7);
+      }
+      70% {
+        box-shadow: 0 0 0 15px rgba(37, 211, 102, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(37, 211, 102, 0);
+      }
+    }
+    
+    /* Responsive Design */
+    @media (max-width: 992px) {
+      .hero h1 {
+        font-size: 3.5rem;
+      }
+      
+      .gallery-grid {
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      }
+      
+      .video-carousel iframe {
+        height: 400px;
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.8rem;
+      }
+      
+      .section-title {
+        font-size: 2.3rem;
+      }
+      
+      .video-carousel iframe {
+        height: 300px;
+      }
+      
+      .cta-title {
+        font-size: 2.5rem;
+      }
+    }
+    
+    @media (max-width: 576px) {
+      .hero h1 {
+        font-size: 2.3rem;
+      }
+      
+      .section {
+        padding: 80px 5%;
+      }
+      
+      .gallery-item {
+        height: 350px;
+      }
+      
+      .whatsapp-float {
+        width: 60px;
+        height: 60px;
+        bottom: 30px;
+        right: 30px;
+        font-size: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg sticky-top">
+    <div class="container-fluid">
+      <a class="navbar-brand" href="#">PEFA <span>HOMES</span></a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"><i class="fas fa-bars"></i></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link active" href="#">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#packages">Packages</a></li>
+          <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+        <button class="btn btn-custom ms-lg-3 mt-3 mt-lg-0">BOOK CONSULTATION</button>
+      </div>
+    </div>
+  </nav>
+
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="container">
+      <h1>Luxury Living Room Design</h1>
+      <p class="hero-subtitle">This modern living room design harmoniously blends elegance, comfort, and innovation. Crafted with premium materials, it transforms the space into a luxurious yet functional haven tailored for refined lifestyles.</p>
+      <button class="hero-btn">View Project</button>
+    </div>
+  </section>
+
+  <!-- Project Overview -->
+  <section class="section" id="overview">
+    <div class="container">
+      <h2 class="section-title">Project Overview</h2>
+      <p class="section-subtitle">This modern living room design harmoniously blends elegance, comfort, and innovation. Crafted with premium materials, it transforms the space into a luxurious yet functional haven tailored for refined lifestyles.</p>
+      
+      <div class="row">
+        <div class="col-lg-6 mb-5 mb-lg-0">
+          <div class="overview-card">
+            <div class="overview-header">
+              <h3>Project Details</h3>
+            </div>
+            <div class="overview-content">
+              <ul class="overview-list">
+                <li><span>Location:</span> <span>Los Angeles, USA</span></li>
+                <li><span>Area:</span> <span>1500 sq. ft</span></li>
+                <li><span>Style:</span> <span>Contemporary Minimalist</span></li>
+                <li><span>Completion:</span> <span>August 2025</span></li>
+                <li><span>Design Team:</span> <span>Sophia Reynolds, Michael Chen</span></li>
+                <li><span>Materials:</span> <span>Italian Marble, Walnut Wood, Brass Accents</span></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-6">
+          <div class="overview-card">
+            <div class="overview-header">
+              <h3>Design Philosophy</h3>
+            </div>
+            <div class="overview-content">
+              <p>Our approach to this project was guided by the principles of sophisticated minimalism. We focused on creating a space that feels both luxurious and livable, with meticulous attention to detail and premium materials.</p>
+              <p class="mt-4">The color palette combines warm neutrals with rich textures and metallic accents. Every element was carefully curated to create a harmonious balance between form and function.</p>
+              <p class="mt-4">Lighting plays a crucial role, with custom-designed fixtures that create ambiance while serving as sculptural elements in the space.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery Section -->
+  <section class="section" id="gallery" style="background-color: #f8f8f8;">
+    <div class="container">
+      <h2 class="section-title">Project Gallery</h2>
+      <p class="section-subtitle">Explore our visual journey through this exquisite living space, showcasing the transformation from concept to reality.</p>
+      
+      <div class="gallery-grid">
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1615529162924-f8605388463a?auto=format&fit=crop&w=800&q=80" alt="Living Room" class="gallery-img">
+          <div class="gallery-overlay">
+            <h3>Main Living Area</h3>
+            <p>Custom furniture and lighting design</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1584622650111-993a426fbf0a?auto=format&fit=crop&w=800&q=80" alt="Dining Area" class="gallery-img">
+          <div class="gallery-overlay">
+            <h3>Formal Dining Space</h3>
+            <p>Italian marble table with velvet chairs</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1613490493576-7fde63acd811?auto=format&fit=crop&w=800&q=80" alt="Kitchen" class="gallery-img">
+          <div class="gallery-overlay">
+            <h3>Gourmet Kitchen</h3>
+            <p>Custom cabinetry and premium appliances</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1582407947304-fd86f028f716?auto=format&fit=crop&w=800&q=80" alt="Bedroom" class="gallery-img">
+          <div class="gallery-overlay">
+            <h3>Master Suite</h3>
+            <p>Luxury bedding and custom millwork</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1493663284031-b7e3aefcae8e?auto=format&fit=crop&w=800&q=80" alt="Bathroom" class="gallery-img">
+          <div class="gallery-overlay">
+            <h3>Spa Bathroom</h3>
+            <p>Calacatta marble and freestanding tub</p>
+          </div>
+        </div>
+        
+        <div class="gallery-item">
+          <img src="https://images.unsplash.com/photo-1618221195710-dd6b41faaea6?auto=format&fit=crop&w=800&q=80" alt="Detail" class="gallery-img">
+          <div class="gallery-overlay">
+            <h3>Design Details</h3>
+            <p>Custom hardware and artisanal finishes</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Video Gallery -->
+  <section class="section">
+    <div class="container">
+      <h2 class="section-title">Video Gallery</h2>
+      <p class="section-subtitle">Experience the space through our professionally produced videos showcasing the design details and ambiance.</p>
+      
+      <div id="videoCarousel" class="carousel slide video-carousel" data-bs-ride="carousel">
+       <div class="carousel-inner">
+  <div class="carousel-item active">
+    <iframe 
+      src="https://www.youtube.com/embed/tMbozbQdx00"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+      loading="lazy">
+    </iframe>
+  </div>
+
+  <div class="carousel-item">
+    <iframe 
+      src="https://www.youtube.com/embed/Yh_j1lo1A-M"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+      loading="lazy">
+    </iframe>
+  </div>
+
+  <div class="carousel-item">
+    <iframe 
+      src="https://www.youtube.com/embed/9nNUWR829nM"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+      loading="lazy">
+    </iframe>
+  </div>
+</div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#videoCarousel" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#videoCarousel" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="container">
+      <h2 class="cta-title">Transform Your Space with Us</h2>
+      <p class="cta-subtitle">Schedule a consultation and let's bring your vision to life with stunning interior design solutions tailored to your lifestyle.</p>
+      <button class="cta-btn">Book a Consultation</button>
+    </div>
+  </section>
+
+  <!-- WhatsApp Float -->
+  <a href="https://wa.me/8056082060" target="_blank" class="whatsapp-float">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+  <!-- Enquire Banner -->
+  <div class="enquire-banner">
+    <span>Ready to start your luxury design journey?</span>
+    <span>ENQUIRE NOW <i class="fas fa-arrow-right"></i></span>
+  </div>
+
+  <!-- Image Modal -->
+  <div id="imgModal" class="modal-img">
+    <span class="modal-close">&times;</span>
+    <img class="modal-img-content" id="modalImage">
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  <script>
+    // Navbar scroll effect
+    window.addEventListener('scroll', function() {
+      const navbar = document.querySelector('.navbar');
+      if (window.scrollY > 100) {
+        navbar.classList.add('scrolled');
+      } else {
+        navbar.classList.remove('scrolled');
+      }
+    });
+
+    // Image Modal
+    const modal = document.getElementById('imgModal');
+    const modalImg = document.getElementById('modalImage');
+    const closeModal = document.querySelector('.modal-close');
+
+    document.querySelectorAll('.gallery-item').forEach(item => {
+      item.addEventListener('click', function() {
+        const imgSrc = this.querySelector('img').src;
+        modal.style.display = "block";
+        modalImg.src = imgSrc;
+      });
+    });
+
+    closeModal.addEventListener('click', function() {
+      modal.style.display = "none";
+    });
+
+    window.addEventListener('click', function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    });
+
+    // Enquire Banner Click
+    document.querySelector('.enquire-banner').addEventListener('click', function() {
+      document.querySelector('#contact').scrollIntoView({ behavior: 'smooth' });
+    });
+  </script>
+</body>
+</html>
