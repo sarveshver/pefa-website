@@ -23,7 +23,8 @@ SUPABASE_ANON_KEY = config("SUPABASE_ANON_KEY", default="")
 SECRET_KEY = config('SECRET_KEY')
 
 
-ALLOWED_HOSTS = ['your-app.onrender.com', 'localhost', '127.0.0.1']
+ALLOWED_HOSTS = ['pefa-op1p.onrender.com', 'localhost', '127.0.0.1']
+
 
 # Apps
 INSTALLED_APPS = [
